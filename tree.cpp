@@ -14,6 +14,8 @@ typedef struct tag {
 }tag_t,*ptag_t;//辅助队列结构
 
 void preOrder(BiTree p);
+void midOrder(BiTree p);
+void lastOrder(BiTree p);
 
 void preOrder(BiTree p)
 {
@@ -24,6 +26,24 @@ void preOrder(BiTree p)
 		preOrder(p->rchild);
 	}
 }
+void midOrder(BiTree p)
+{
+	if (p != NULL)
+	{
+		midOrder(p->lchild);
+		putchar(p->data);
+		midOrder(p->rchild);
+	}
+}
+
+void lastOrder(BiTree p)
+{
+	if (p != NULL)
+	{
+		lastOrder(p->lchild);
+		lastOrder(p->rchild);
+		putchar(p->data);
+	}
 
 int main()
 {
@@ -68,4 +88,13 @@ int main()
 
 	printf("----------前序遍历-----------\n");
 	preOrder(tree);
+	printf("\n");
+
+	printf("----------中序遍历-----------\n");
+	midOrder(tree);
+	printf("\n");
+
+	printf("----------后序遍历-----------\n");
+	lastOrder(tree);
+	printf("\n");
 }
